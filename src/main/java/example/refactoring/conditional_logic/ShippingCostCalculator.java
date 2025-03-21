@@ -4,11 +4,11 @@ abstract class ShippingCostCalculator {
     public static ShippingCostCalculator of(double weight) {
         if (weight > 20) {
             return new HeavyWeightShippingCostCalculator(weight);
-        } else if (weight > 10) {
-            return new MediumWeightShippingCostCalculator(weight);
-        } else {
-            return new LigthWeightShippingCostCalculator(weight);
         }
+        if (weight > 10) {
+            return new MediumWeightShippingCostCalculator(weight);
+        }
+        return new LigthWeightShippingCostCalculator(weight);
     }
 
     protected double weight;
