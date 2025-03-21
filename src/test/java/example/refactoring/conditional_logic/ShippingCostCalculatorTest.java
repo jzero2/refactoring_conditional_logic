@@ -9,7 +9,7 @@ public class ShippingCostCalculatorTest {
     void testCalculateCostForHeavyWeight() {
         ConditionalLogicExistingClass calculator = new ConditionalLogicExistingClass();
         Order order = new Order(25); // Weight > 20
-        double cost = calculator.calculateCost(order);
+        double cost = calculator.calculateCost(order.getWeight());
         assertEquals(25 * 1.5 + 10, cost);
     }
 
@@ -17,7 +17,7 @@ public class ShippingCostCalculatorTest {
     void testCalculateCostForMediumWeight() {
         ConditionalLogicExistingClass calculator = new ConditionalLogicExistingClass();
         Order order = new Order(15); // 10 < Weight <= 20
-        double cost = calculator.calculateCost(order);
+        double cost = calculator.calculateCost(order.getWeight());
         assertEquals(15 * 1.2, cost);
     }
 
@@ -25,7 +25,7 @@ public class ShippingCostCalculatorTest {
     void testCalculateCostForLightWeight() {
         ConditionalLogicExistingClass calculator = new ConditionalLogicExistingClass();
         Order order = new Order(5); // Weight <= 10
-        double cost = calculator.calculateCost(order);
+        double cost = calculator.calculateCost(order.getWeight());
         assertEquals(5 * 1.0, cost);
     }
 }
