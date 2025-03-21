@@ -15,7 +15,7 @@ abstract class ShippingCostCalculator {
 
     protected ShippingCostCalculator(double weight) {this.weight = weight;}
 
-    public double invoke() {
+    public double calculate() {
         return weight * getRate() + getAdjustment();
     }
 
