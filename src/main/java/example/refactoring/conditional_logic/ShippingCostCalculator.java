@@ -1,9 +1,13 @@
 package example.refactoring.conditional_logic;
 
 class ShippingCostCalculator {
+    public static ShippingCostCalculator of(double weight) {
+        return new ShippingCostCalculator(weight);
+    }
+
     private double weight;
 
-    public ShippingCostCalculator(double weight) {this.weight = weight;}
+    private ShippingCostCalculator(double weight) {this.weight = weight;}
 
     public double invoke() {
         return weight * getRate() + getAdjustment();
