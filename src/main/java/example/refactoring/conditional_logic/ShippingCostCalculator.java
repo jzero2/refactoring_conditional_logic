@@ -2,12 +2,18 @@ package example.refactoring.conditional_logic;
 
 class ShippingCostCalculator {
     public static ShippingCostCalculator of(double weight) {
-        return new ShippingCostCalculator(weight);
+        if (weight > 20) {
+            return new HeavyWeightShippingCostCalculator(weight);
+        } else if (weight > 10) {
+            return new MediumWeightShippingCostCalculator(weight);
+        } else {
+            return new LigthWeightShippingCostCalculator(weight);
+        }
     }
 
     private double weight;
 
-    private ShippingCostCalculator(double weight) {this.weight = weight;}
+    protected ShippingCostCalculator(double weight) {this.weight = weight;}
 
     public double invoke() {
         return weight * getRate() + getAdjustment();
